@@ -102,7 +102,8 @@ export class CarComponent implements OnInit {
   }
 
   refreshFiltr() {
-    this.getCars("",this.currentPage);
+   this.currentPage=1;
+    this.getCars("",1);
   }
 
   paginate(event) {
