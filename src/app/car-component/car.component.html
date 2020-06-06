@@ -11,14 +11,16 @@
     <input type="text" class="form-control" placeholder="Wpisz poczatek nazwy koloru po jakim chcesz filtrować"
            [(ngModel)]="colour" aria-describedby="basic-addon2">
     <div class="input-group-append">
-      <button class="btn btn-outline-secondary" type="button" (click)="refreshFiltr()"><i class="fas fa-search"></i></button>
+      <button class="btn btn-outline-secondary" type="button" (click)="refreshFiltr()">
+        <i class="fas fa-search"></i>
+        </button>
     </div>
   </div>
 </div>
   <br>
 
 <div *ngIf="addView==false">
-  <button type="button" class="btn btn-secondary" (click)="showAdd()">Dodawanie nowego samochodu</button>
+  <button type="button" class="btn btn-secondary" (click)="showAdd()"><i class="fas fa-plus"></i><i class="fas fa-car"></i></button>
 </div>
 <table class="table table-hover" >
   <thead>
