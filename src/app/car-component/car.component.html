@@ -1,0 +1,78 @@
+<div class="container">
+<p-toast position="top-right"></p-toast>
+  <h1 style="text-align: center;">Baza danych samochodów</h1>
+<br>
+<br>
+
+<div class="col-sm-12  row justify-content-md-center">
+
+<div class="col-sm-6">
+  <div class="input-group mb-3">
+    <input type="text" class="form-control" placeholder="Wpisz poczatek nazwy koloru po jakim chcesz filtrować"
+           [(ngModel)]="colour" aria-describedby="basic-addon2">
+    <div class="input-group-append">
+      <button class="btn btn-outline-secondary" type="button" (click)="refreshFiltr()"><i class="fas fa-search"></i></button>
+    </div>
+  </div>
+</div>
+  <br>
+
+<div *ngIf="addView==false">
+  <button type="button" class="btn btn-secondary" (click)="showAdd()">Dodawanie nowego samochodu</button>
+</div>
+<table class="table table-hover" >
+  <thead>
+  <tr>
+    <th scope="col" style="width:15%" >#</th>
+    <th scope="col" style="width:20%">Marka</th>
+    <th scope="col" style="width:20%">Model</th>
+    <th scope="col" style="width:15%">Kolor</th>
+    <th scope="col" style="width:15%">Rok</th>
+    <th scope="col" style="width:15%">Edutuj/Usuń</th>
+  </tr>
+  </thead>
+  <tbody>
+  <ng-container *ngFor="let car of listCars">
+    <tr scope="row">
+      <th >{{car.id}}</th>
+      <td>{{car.carMake}}</td>
+      <td>{{car.model}}</td>
+      <td>{{car.colour}}</td>
+      <td>{{car.year}}</td>
+      <td>
+        <button type="button" class="btn btn-secondary" (click)="clicEdit(car.id)"><i class="fas fa-edit"></i></button> &nbsp;
+        <button type="button" class="btn btn-secondary" (click)="deleteCar(car.id)" ><i class="fas fa-trash-alt"></i></button>
+      </td>
+    </tr>
+    <tr *ngIf="editClickindex == car.id">
+      <td>{{car.id}}</td>
+      <td><input type="text" class="form-control" id="Marka" [(ngModel)]="car.carMake"></td>
+      <td><input type="text" class="form-control" id="Model" [(ngModel)]="car.model"></td>
+      <td><input type="text" class="form-control" id="Kolor" [(ngModel)]="car.colour"></td>
+      <td><input type="text" class="form-control" id="Rok" [(ngModel)]="car.year"></td>
+      <td><button type="button" class="btn btn-secondary" (click)="updateCar(car)"><i class="far fa-save"></i></button></td>
+    </tr>
+  </ng-container>
+  <tr *ngIf="addView==true">
+    <td>#</td>
+    <td><input type="text" class="form-control" id="Marka" [(ngModel)]="addingCar.carMake"></td>
+    <td><input type="text" class="form-control" id="Model" [(ngModel)]="addingCar.model"></td>
+    <td><input type="text" class="form-control" id="Kolor" [(ngModel)]="addingCar.colour"></td>
+    <td><input type="text" class="form-control" id="Rok" [(ngModel)]="addingCar.year"></td>
+    <td><button type="button" class="btn btn-secondary" (click)="addNewCar(addingCar)"><i class="fas fa-plus"></i></button>&nbsp;
+
+      <button type="button" class="btn btn-secondary" (click)="addView=false" ><i class="far fa-window-close"></i></button></td>
+  </tr>
+
+  </tbody>
+</table>
+  <div *ngIf="listCars == null"  class="alert alert-danger" role="alert" >
+    Oczekiwanie na połaczenie z serwerem.
+  </div>
+  <div *ngIf="listCars.length == 0 " class="alert alert-danger" role="alert">
+    Lista jest pusta!
+  </div>
+  <p-paginator [rows]="5" [totalRecords]=totalElement  (onPageChange)="paginate($event)"></p-paginator>
+
+</div>
+</div>

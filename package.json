@@ -3,11 +3,12 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "start": "node server.js",
+    "postinstall": "ng build --aot --prod"
   },
   "private": true,
   "dependencies": {
@@ -20,12 +21,15 @@
     "@angular/platform-browser": "~8.2.7",
     "@angular/platform-browser-dynamic": "~8.2.7",
     "@angular/router": "~8.2.7",
+    "@fortawesome/fontawesome-free": "^5.13.0",
     "@fullcalendar/core": "^4.3.1",
     "@ng-bootstrap/ng-bootstrap": "^5.1.4",
     "@types/jquery": "^3.3.31",
+    "angular-font-awesome": "^3.1.2",
     "bootstrap": "^4.4.1",
     "chart.js": "^2.9.3",
     "font-awesome": "^4.7.0",
+    "fontawesome": "^5.6.3",
     "jquery": "^3.4.1",
     "popper": "^1.0.1",
     "popper.js": "^1.16.0",
