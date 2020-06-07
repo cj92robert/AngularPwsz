@@ -56,6 +56,12 @@ export class CarComponent implements OnInit {
   }
 
   clicEdit(id: number) {
+    this.editClickindex=-1;
+    this.addView=false;
+    this.addingCar.year=0
+    this.addingCar.colour="";
+    this.addingCar.carMake="";
+    this.addingCar.model="";
     if(this.editClickindex==id){
       this.editClickindex=-1;
     }else{
@@ -77,6 +83,7 @@ export class CarComponent implements OnInit {
   }
 
   showAdd() {
+    this.editClickindex=-1;
     this.addView=true;
   }
 
