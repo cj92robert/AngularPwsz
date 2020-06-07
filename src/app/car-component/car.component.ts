@@ -29,6 +29,12 @@ export class CarComponent implements OnInit {
     this.getCars("",1);
   }
   getCars(colour: string, page:number){
+    this.editClickindex=-1;
+    this.addView=false;
+    this.addingCar.year=0
+    this.addingCar.colour="";
+    this.addingCar.carMake="";
+    this.addingCar.model="";
     this.carService.getCars(this.colour, page).subscribe(value=>{
       this.listCars=value.listCars;
       this.currentPage=value.currentPage;
