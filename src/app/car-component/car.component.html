@@ -74,7 +74,7 @@
   <div *ngIf="listCars.length == 0 " class="alert alert-danger" role="alert">
     Lista jest pusta!
   </div>
-  <div *ngIf="listCars.length >10">
+  <div *ngIf="totalElement >10">
   <p-paginator [rows]="5" [totalRecords]=totalElement  (onPageChange)="paginate($event)"></p-paginator>
   </div>
 </div>
