@@ -22,7 +22,7 @@ export class CarComponent implements OnInit {
 
   currentPage=1;
   colour: string="";
-  totalElement: String;
+  totalElement: number;
 
   constructor(private carService: CarServiceService,private messageService: MessageService) { }
   ngOnInit() {
